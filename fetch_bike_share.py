@@ -3,7 +3,7 @@ import json
 from datetime import datetime, timezone
 import os
 
-URL = "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/2b44db0d-eea9-442d-b038-79335368ad5a/resource/5c1c2c06-d27f-47b7-ae82-926a6d23d76f/download/bike-share-json.json"
+URL = "https://tor.publicbikesystem.net/ube/gbfs/v1/en/station_status"
 
 OUTPUT_DIR = "bike_share_snapshots"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
