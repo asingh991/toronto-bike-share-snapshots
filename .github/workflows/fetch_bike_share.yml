@@ -2,8 +2,8 @@ name: Fetch Bike Share Snapshot
 
 on:
   schedule:
-    - cron: "*/10 * * * *"  # every 10 minutes
-  workflow_dispatch:        # allow manual runs
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
 
 jobs:
   fetch:
@@ -11,6 +11,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -27,6 +30,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
           git add bike_share_snapshots/
           git commit -m "Add bike share snapshot $(date -u +%Y-%m-%dT%H:%M:%SZ)" || echo "No changes to commit"
           git push
