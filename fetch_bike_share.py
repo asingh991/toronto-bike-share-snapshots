@@ -13,7 +13,7 @@ def fetch_and_save():
     resp.raise_for_status()
     data = resp.json()
 
-    now = datetime.now(timezone.edt)
+    now = datetime.now(timezone.utc)
     timestamp = now.strftime("%Y-%m-%dT%H-%M-%S")
     filename = f"bike-share-{timestamp}.json"
     filepath = os.path.join(OUTPUT_DIR, filename)
