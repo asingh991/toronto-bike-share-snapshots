@@ -3,7 +3,8 @@ name: Fetch Bike Share Snapshot
 on:
   schedule:
     - cron: "*/6 * * * *"
-
+  workflow_dispatch:
+  
 jobs:
   fetch:
     runs-on: ubuntu-latest
